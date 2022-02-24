@@ -18,14 +18,20 @@ export default {
       title: 'Title',
     },
     {
+      name: 'hero',
+      type: 'hero',
+      title: 'Page Hero'
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Page sections',
       of: [
-        { type: 'hero' },
-        { type: 'imageSection' },
-        { type: 'mailchimp' },
-        { type: 'textSection' },
+        { type: 'fTextImage' },
+        { type: 'imageTextCarousel' },
+        { type: 'cards' },
+        { type: 'contactForm' },
+        {type: 'addresses'}
       ],
     },
     {

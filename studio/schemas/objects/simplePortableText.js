@@ -6,7 +6,7 @@ export default {
     {
       title: 'Block',
       type: 'block',
-      styles: [],
+      styles: [{title: 'h1', value: 'h3'}, {title: 'h2', value: 'h4'}],
       lists: [],
       marks: {
         decorators: [
@@ -16,9 +16,6 @@ export default {
         ],
         annotations: [{ type: 'link' }, { type: 'internalLink' }],
       },
-    },
-    {
-      type: 'embedHTML',
-    },
+    }
   ],
 };
