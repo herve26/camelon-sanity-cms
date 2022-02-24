@@ -1,0 +1,35 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/variables';
+
+.container{
+	padding: 1rem;
+
+	@include breakpoint-range($from: lg){
+		// border: 1px solid red;
+		padding: 1rem $page-padding;
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+
+.image_container{
+	display: none;
+	position: relative;
+	@include breakpoint-range($from: lg){
+		display: block;
+		width: 50%;
+	}
+}
+
+.form_container{
+	// border: 1px solid red;
+	@include breakpoint-range($from: lg){
+		width: 50%;
+		padding-left: 1rem;
+	}
+}
+
+.input_container{
+	margin-bottom: 1rem;
+}

@@ -1,0 +1,35 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/variables';
+
+.container{
+	// border: 1px solid red;
+	padding: 1rem;
+	@include breakpoint-range($from: lg){
+		// border: 1px solid red;
+		padding: 1rem $page-padding;
+		position: relative;
+	}
+}
+
+.geoMap{
+	height: 70vw;
+	background: #FFF;
+	box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+
+	@include breakpoint-range($from: lg){
+		width: 50%;
+		height: 30vw;
+	}
+}
+
+.addresses_container{
+	position: absolute;
+	top: 12vw;
+	right: $page-padding;
+}
+
+.contact{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}

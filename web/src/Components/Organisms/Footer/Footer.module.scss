@@ -1,0 +1,9 @@
+@import '../../../../styles/variables';
+
+.container{
+	background: $secondary_color;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	padding: .5rem 0;
+}

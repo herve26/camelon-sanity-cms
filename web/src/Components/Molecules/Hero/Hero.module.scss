@@ -1,0 +1,66 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/variables';
+@import '../../../../styles/typescale';
+
+.container{
+	position: relative;
+	min-height: 24rem;
+
+	@include breakpoint-range($from: md){
+		min-height: 80vh;;
+	}
+}
+
+.image{
+}
+
+.overlay{
+	position: absolute;
+	top:  0;
+	left:  0;
+	right: 0;
+	bottom:  0;
+	background: rgba(0,0,0,0.42);
+	z-index: 10;
+	padding:  1rem;
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint-range($from: md){
+		padding: 1rem 10vw;
+	}
+}
+
+.menu_button{
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.menu_button button{
+	border: none;
+	background: transparent;
+	padding: 8px;
+}
+
+.content{
+	margin: auto 0;
+
+	@include breakpoint-range($from: md){
+		// border: 1px solid blue;
+		width: 50%;
+	}
+}
+
+.heading{
+	font-size:  $h2;
+	margin:  0;
+	color:  $white;
+}
+
+.subHeading{
+	/*border:  1px solid red;*/
+	color:  $white;
+	@include breakpoint-range($from: md){
+		margin: 2.4rem 0;
+	}
+}

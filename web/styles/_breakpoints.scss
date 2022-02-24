@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "sass:string";
+
+$breakpoints: (
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1920px, 
+);
+
+@mixin breakpoint-range($mode: screen, $from: false, $to: false, $extra: ()){
+	@each $key in ($from, $to){
+		@if $key and not map.has-key($breakpoints, $key){
+			@error "Available values for ($from, $to) args are: #{map.keys($brakpoints)}"
+		}
+	}
+
+	$conditions: $mode;
+
+	@each $key, $value in (min-width: $from, max-width: $to){
+		@if $value{
+			$modifier: if($key == 'max-width', -1px, 0px);
+			$condition: " and (#{$key}: #{map.get($breakpoints, $value) - $modifier})";
+			$conditions: string.insert($conditions, $condition, -1);
+		}
+	}
+
+	@each $key, $value in $extra {
+		$condition: " and (#{$key}: #{$value})"
+	}
+
+	@media #{$conditions} { @content; }
+}

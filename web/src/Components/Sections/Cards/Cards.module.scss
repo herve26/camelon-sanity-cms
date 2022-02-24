@@ -1,0 +1,23 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/variables';
+
+.container{
+	padding: 1rem;
+	@include breakpoint-range($from: lg){
+		padding: 1rem $page-padding;
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+.card{
+	margin-bottom: 2rem;
+
+	@include breakpoint-range($from: lg){
+		width: 30%;
+		margin: 0;
+		&:nth-child(2n){
+			margin: 0 auto;
+		}
+	}
+}

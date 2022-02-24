@@ -1,0 +1,29 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/variables';
+
+.container{
+	padding: 16px;
+	@include breakpoint-range($from: md){
+		padding: 1rem $page-padding;
+	}
+
+	@include breakpoint-range($from: lg){
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+.image{
+	// border: 1px solid blue;
+	@include breakpoint-range($from: lg){
+		width: 50%;
+	}
+}
+
+.content{
+	@include breakpoint-range($from: lg){
+		// border: 1px solid red;
+		margin-left: 1rem;
+		width: 50%;
+	}
+}
