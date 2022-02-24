@@ -2,11 +2,9 @@ import Image from 'next/image';
 import Button from '#Atoms/Button';
 import SanityImage from '#Atoms/SanityImage';
 import SimpleBlockContent from '#Atoms/SimpleBlockContent';
-import heroImage from '../../../Images/julienne-m-o3xpyoHD59c-unsplash.jpg';
 import styles from './Hero.module.scss';
 
 export default function Hero({nav, hero}){
-	console.log(hero)
 	const {heading, backgroundImage, tagline} = hero
 	return (
 		<div className={styles.container}>
