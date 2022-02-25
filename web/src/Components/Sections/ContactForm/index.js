@@ -27,7 +27,7 @@ export default function ContactForm({image}){
 
 		formData["g-recaptcha-response"] = recaptchaRef.current.getValue();
 
-		const formUrl = process.env.NODE_ENV === "production" ? `https://submit-form.com/${process.env.FORM_SUMIT_KEY}` : "https://submit-form.com/echo"
+		const formUrl = process.env.NODE_ENV === "production" ? `https://submit-form.com/${process.env.NEXT_PUBLIC_FORM_SUMIT_KEY}` : "https://submit-form.com/echo"
 
 		fetch(formUrl, {
 			method: "POST",
@@ -40,7 +40,6 @@ export default function ContactForm({image}){
 		.then(function (response){
 			setModalOpen(true);	
 			e.target.reset()
-			console.log(process.env.NODE_ENV)
 		})
 		.catch(function (err){
 			console.log(err)
@@ -65,7 +64,7 @@ export default function ContactForm({image}){
 				<div className={styles.recaptcha}>
 				<ReCAPTCHA 
 					ref={recaptchaRef}
-					sitekey={`${process.env.RECAPTCHA_KEY}`}
+					sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`}
 				/>
 				</div>
 				<Button type="submit">Reach Us</Button>

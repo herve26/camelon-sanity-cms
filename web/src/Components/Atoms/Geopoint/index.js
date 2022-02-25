@@ -4,7 +4,7 @@ import { StaticGoogleMap, Marker} from 'react-static-google-map';
 export default function Geopoint({lat, lng}){
 	
 	const coord = `${lat},${lng}`
-	const key = process.env.GOOGLE_MAP_KEY
+	const key = process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY
 	const size = "800x600"
 
 	return (
