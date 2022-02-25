@@ -1,0 +1,36 @@
+@import '../../../../styles/variables';
+
+.modal{
+	position: absolute;
+	top: $page-padding;
+	bottom: $page-padding;
+	right: $page-padding;
+	left: $page-padding;
+	background: $primary_color;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.close_button{
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.content{
+	color: #FFF;
+}

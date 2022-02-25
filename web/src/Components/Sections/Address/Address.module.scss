@@ -8,6 +8,8 @@
 		// border: 1px solid red;
 		padding: 1rem $page-padding;
 		position: relative;
+		display: flex;
+		flex-direction: row;
 	}
 }
 
@@ -15,6 +17,11 @@
 	height: 70vw;
 	background: #FFF;
 	box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+	overflow: hidden;
+	img{
+		height: auto;
+		// width: 100%;
+	}
 
 	@include breakpoint-range($from: lg){
 		width: 50%;
@@ -23,9 +30,25 @@
 }
 
 .addresses_container{
-	position: absolute;
-	top: 12vw;
-	right: $page-padding;
+	// border: 1px solid blue;
+	// position: absolute;
+	// top: 12vw;
+	// right: $page-padding;
+	@include breakpoint-range($from: lg){
+		margin-left: 2rem;
+	}
+}
+
+.list{
+	// border: 1px solid blue;
+	margin-top: 2rem;
+	h4{
+		margin-bottom: .5rem;
+	}
+
+	@include breakpoint-range($from: lg){
+		margin-top: 0;
+	}
 }
 
 .contact{

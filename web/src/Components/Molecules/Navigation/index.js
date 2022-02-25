@@ -1,25 +1,28 @@
 import { useState } from 'react';
 import styles from './Navigation.module.scss';
+import Menu from '../../../icons/menu_open.svg';
+import Close from '../../../icons/close.svg';
 
-export default function Navigation(){
+export default function Navigation({nav}){
 	const [open, setOpen] = useState(false)
+	
 	const handleClick = e => {
 		document.body.classList.toggle('menu_open')
 		setOpen(!open)
 	}
+
 	return(
 		<nav className={styles.container}>
 			<div onClick={handleClick} className={styles.menu_button_container}>
-				<button className={styles.menu_button}>#</button>
+				<button className={styles.menu_button}>
+					<Menu className={styles.menu_icon} height="1em" width="1em" fill="#FFFFFF"/>
+				</button>
 			</div>
 			<ul className={`${styles.menu} ${open ? styles.open : ''}`}>
-				<li><a href="#who">Who Are We?</a></li>
-				<li><a href="#process">Our Process</a></li>
-				<li><a href="#dates">Our Dates</a></li>
-				<li><a href="#order">Order</a></li>
-				<li><a href="#contact">Contact</a></li>
-				<li><a href="#location">Our Addresses</a></li>
-				<li className={styles.menu_close}><button onClick={handleClick}>X</button></li>
+				{nav.map(n => <li key={n._key}><a href={`#${n.Slug}`}>{n.title}</a></li>)}
+				<li className={styles.menu_close}><button onClick={handleClick}>
+					<Close height="1em" width="1em" fill="#FFFFFF" style={{transform: 'scale(1.8)'}} />
+				</button></li>
 			</ul>
 		</nav>
 	)

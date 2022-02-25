@@ -14,11 +14,10 @@ export default function Section({title, _type, appearance='default', half, id, .
 		<section className={styles.container} id={id}>
 			<div className={styles.title_container}>
 				<h3 className={styles.title}>{title}</h3>
-				<div className={styles.title_bar}/>
+				<div className={`${styles.title_bar} ${appearance === 'primary' ? styles.second_bar : ''}`}/>
 			</div>
 			<div className={`${styles.content}`}>
 				<Content {...content}/>
-				<div className={`${styles.appearance} ${appearances[appearance]} ${half ? styles.half : ''}`}/>
 			</div>
 		</section>
 	)

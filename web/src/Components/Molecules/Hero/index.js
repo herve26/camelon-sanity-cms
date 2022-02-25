@@ -18,7 +18,7 @@ export default function Hero({nav, hero}){
 					<Button>Contact Us</Button>
 				</div>
 			</div>
-			<SanityImage className={styles.image} layout="fill" src={backgroundImage}/>
+			<SanityImage className={styles.image} priority layout="fill" src={backgroundImage}/>
 		</div>
 	)
 }

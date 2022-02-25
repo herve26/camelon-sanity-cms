@@ -1,11 +1,7 @@
 import Geopoint from '#Atoms/Geopoint';
+import Contact from '#Atoms/Contact';
 import styles from './Address.module.scss';
 
-const Contact = ({value}) => {
-	return(
-		<span>{value}</span>
-	)
-}
 
 const AddressList = ({info, title}) => {
 	return(

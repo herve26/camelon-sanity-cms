@@ -8,7 +8,7 @@ import Header from '#Organisms/Header';
 import Main from '#Organisms/Main';
 import Footer from '#Organisms/Footer';
 
-export default function Home({hero, sections}) {
+export default function Home({hero, sections, navigation}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +17,7 @@ export default function Home({hero, sections}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header hero={hero}/>
+      <Header hero={hero} navigation={navigation}/>
       <Main sections={sections}/>
       <Footer/>
     
@@ -26,24 +26,24 @@ export default function Home({hero, sections}) {
 }
 
 
-export async function getStaticProps(params) {
-  
+export async function getStaticProps({locale, defaultLocale}) {
+
+  const clientConfig = {...client.config(), token: process.env.SANITY_TOKEN}
+  client.config(clientConfig)
+
   const data = await client.fetch(
     groq`
-      *[_type == "route"][0]{
-       page ->{
+      *[_type == "page" && __i18n_lang == "${locale}"][0]{
         hero,
-        content
-      }
+        content,
+        navigation
       }
     `
   )
 
-  console.log(data)
-
-
   return { props: {
-    hero: data.page.hero,
-    sections: data.page.content ? data.page.content : []
+    hero: data.hero,
+    sections: data.content ? data.content : [],
+    navigation: data.navigation ? data.navigation : []
   }}
 }
