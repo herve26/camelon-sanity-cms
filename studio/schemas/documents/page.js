@@ -5,6 +5,10 @@ export default {
   type: 'document',
   title: 'Page',
   icon: MasterDetailIcon,
+  i18n: {
+    base: 'fr',
+    languages: ['fr', 'en']
+  },
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -33,6 +37,12 @@ export default {
         { type: 'contactForm' },
         {type: 'addresses'}
       ],
+    },
+    {
+      name: 'navigation',
+      type: 'array',
+      title: 'Page Navigation',
+      of: [{ type: 'navItem' }]
     },
     {
       name: 'description',

@@ -23,6 +23,7 @@ import Address from './objects/Address';
 import Contact from './objects/Contact';
 import Phone from './objects/Phone';
 import WhatsApp from './objects/whatsapp';
+import navItem from './objects/navItem';
 
 //Sections
 import FTextImage from './sections/FTextImage';
@@ -59,6 +60,7 @@ export default createSchema({
     internalLink,
     link,
     mailchimp,
+    navItem,
     page,
     portableText,
     Phone,

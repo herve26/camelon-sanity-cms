@@ -6,5 +6,7 @@
   "@sanity/form-builder": "b38478227ba5e22c91981da4b53436df22e48ff25238a55a973ed620be5068aa",
   "@sanity/vision": "da5b6ed712703ecd04bf4df560570c668aa95252c6bc1c41d6df1bda9b8b8f60",
   "sanity-plugin-leaflet-input": "719f6bf672040fa5af3485f155f7da339033b564cc0978f1249c274ddd26a483",
-  "leaflet-input": "719f6bf672040fa5af3485f155f7da339033b564cc0978f1249c274ddd26a483"
+  "leaflet-input": "719f6bf672040fa5af3485f155f7da339033b564cc0978f1249c274ddd26a483",
+  "sanity-plugin-intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb",
+  "intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb"
 }
