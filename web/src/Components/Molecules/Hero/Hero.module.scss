@@ -5,9 +5,11 @@
 .container{
 	position: relative;
 	min-height: 24rem;
+	overflow: hidden;
 
 	@include breakpoint-range($from: md){
 		min-height: 100vh;
+		max-height: 100vh;
 	}
 }
 

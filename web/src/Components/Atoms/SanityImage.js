@@ -1,9 +1,12 @@
 import Image from 'next/image';
-import imageUrlBuilder from '@sanity/image-url'
+import { useNextSanityImage } from 'next-sanity-image';
 import client from '../../../client';
 
 export default function SanityImage({src, size=2000, layout="intrinsic", ...rest}){
-	const source = imageUrlBuilder(client).image(src).width(size).auto('format').url()
+	const imageProps = useNextSanityImage(
+		client,
+		src
+	)
 
-	return <Image layout={layout} src={source} {...rest}/>
+	return <Image {...imageProps} layout="responsive" sizes="(max-width: 800px) 100vw, 800px"/>
 }
