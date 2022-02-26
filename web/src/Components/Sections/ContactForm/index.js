@@ -26,9 +26,8 @@ export default function ContactForm({image}){
 		})
 
 		formData["g-recaptcha-response"] = recaptchaRef.current.getValue();
-		const form_key = process.env.NEXT_PUBLIC_FORM_SUMIT_KEY
 		
-		fetch(`https://submit-form.com/${form_key}`, {
+		fetch(`https://submit-form.com/${process.env.NEXT_PUBLIC_FORM_SUBMIT_KEY}`, {
 			method: "POST",
 			headers: {
 				"Content-type": "application/json",
