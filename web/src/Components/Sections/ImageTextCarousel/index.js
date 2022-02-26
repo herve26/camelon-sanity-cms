@@ -6,8 +6,7 @@ import Carousel from '#Molecules/Carousel';
 
 
 export default function ImageTextCarousel({slides}){
-	console.log(slides)
-	// return ''
+
 	const slidesArr = slides.map((slide, idx) => 
 		<div key={slide._key} className={styles.slide_container}>
 			<h3>{idx < 10 ? `0${idx + 1}. ` : `${idx + 1}. `}{slide.title}</h3>
@@ -19,6 +18,7 @@ export default function ImageTextCarousel({slides}){
 			</div>
 		</div>
 	)
+	
 	return(
 		<div className={styles.container}>
 			<Carousel slides={slidesArr}/>

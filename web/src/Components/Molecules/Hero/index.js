@@ -6,6 +6,7 @@ import styles from './Hero.module.scss';
 
 export default function Hero({nav, hero}){
 	const {heading, backgroundImage, tagline} = hero
+	
 	return (
 		<div className={styles.container}>
 			<div className={styles.overlay}>
