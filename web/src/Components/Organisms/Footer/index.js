@@ -1,9 +1,10 @@
 import styles from './Footer.module.scss';
+import SimpleBlockContent from '#Atoms/SimpleBlockContent';
 
-export default function Footer(){
+export default function Footer({copy}){
 	return (
 		<footer className={styles.container}>
-			Cameleon. All Right Reserved
+			<SimpleBlockContent blocks={copy}/>
 		</footer>
 	)
 }

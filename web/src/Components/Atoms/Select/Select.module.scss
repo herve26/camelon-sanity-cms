@@ -1,17 +1,17 @@
 @import '../../../../styles/variables';
 
 .container{
-	// border: 1px solid red;
-	color: gray;
-	// font-weight: bold;
-	text-transform: uppercase;
+	// border: 1px solid blue;
 }
 
 .label{
 	display: flex;
 	flex-direction: column;
+	color: gray;
+	text-transform: uppercase;
 }
-.input{
+
+.select{
 	margin-top: .2rem;
 	border: none;
 	width: 100%;

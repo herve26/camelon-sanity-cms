@@ -7,17 +7,18 @@
 		padding: 1rem $page-padding;
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
 	}
 }
 
 .card{
 	margin-bottom: 2rem;
-
+	// border: 1px solid red;
 	@include breakpoint-range($from: lg){
 		width: 30%;
 		margin: 0;
 		&:nth-child(2n){
-			margin: 0 auto;
+			// margin: 0 auto;
 		}
 	}
 }

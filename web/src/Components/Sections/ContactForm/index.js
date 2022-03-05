@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import ReCAPTCHA from 'react-google-recaptcha';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import ContactModal from '#Molecules/ContactModal';
 
@@ -8,64 +9,108 @@ import SanityImage from '#Atoms/SanityImage';
 import Input from '#Atoms/Input';
 import Button from '#Atoms/Button';
 import TextInput from '#Atoms/TextInput';
+import Select from '#Atoms/Select';
 
 import styles from './ContactForm.module.scss';
 
-export default function ContactForm({image}){
+export default function ContactForm({image, subjects, translation={labels: { name: 'Name', email: 'Email', subject: 'Subject', message: 'Message'} }}){
+
 	const recaptchaRef = useRef()
 	const [isModalOpen, setModalOpen] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [captchaToken, setCaptchaToken] = useState('')
+	const [subject, setSubject] = useState(null)
 
-	function submit(e){
+	const router = useRouter()
+
+	console.log(router)
+
+	useEffect(() => {
+		if(router && router.query.query){
+			setSubject(router.query.query)
+		}
+	},[router])
+
+	async function submit(e){
 		e.preventDefault()
-		
-		const formData = {}
+		setIsSubmitting(true)
 
-		Object.entries(e.target.elements).forEach(([name, input]) => {
-			if(input.type !== 'submit')
-				formData[input.name] = input.value
-		})
+		if(!captchaToken.length) {
+			setIsSubmitting(false)
+			return;
+		}
 
-		formData["g-recaptcha-response"] = recaptchaRef.current.getValue();
-		
-		fetch(`https://submit-form.com/${process.env.NEXT_PUBLIC_FORM_SUBMIT_KEY}`, {
+		const captchaVerify = await fetch('/.netlify/functions/captcha-verify', {
 			method: "POST",
 			headers: {
 				"Content-type": "application/json",
-				Accept: "application/json",
+				"Accept": "application/json",
 			},
-			body: JSON.stringify(formData)
+			body: JSON.stringify({token: captchaToken})
 		})
-		.then(function (response){
-			setModalOpen(true);	
-			e.target.reset()
+		.then(response => response.json())
+		.catch(err => { 
+			return { err: true } 
 		})
-		.catch(function (err){
-			console.log(err)
-		})
+
+
+		if(typeof captchaVerify === 'object' && captchaVerify.success){
+			const formData = {}
+			
+			Object.entries(e.target.elements).forEach(([name, input]) => {
+				if(input.type !== 'submit')
+					formData[input.name] = input.value
+			})
+		
+			await fetch(`https://formsubmit.co/ajax/221a37a42430160bfb1631a8a6eff41f`, {
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify(formData)
+			})
+			.then(function (response){
+				setModalOpen(true);	
+				e.target.reset()
+			})
+			.catch(function (err){
+				console.log(err)
+			})
+		}
+
+		setIsSubmitting(false)
 	}
+
+	const { labels, buttons } = translation
 
 	return(
 		<div className={styles.container}>
 			<div className={styles.image_container}>
 				<SanityImage layout="fill" src={image}/>
 			</div>
-			<form onSubmit={submit} className={styles.form_container} action="https://submit-form.com/echo">
+			<form onSubmit={submit} className={styles.form_container}>
 				<div className={styles.input_container}>
-					<Input minlenght="3" maxlenght="48" type="text" name="name" placeholder="Name" required/>
+					<Input minlenght="3" maxlenght="48" type="text" name="name" label={labels.name} required/>
 				</div>
 				<div className={styles.input_container}>
-					<Input type="email" name="email" placeholder="@Email" required/>
+					<Input type="email" name="email" label={labels['email']} required/>
 				</div>
 				<div className={styles.input_container}>
-					<TextInput name="message" placeholder="Message" required/>
+					<Select name="_subject" label={labels['subject']}>
+						{subjects.map(sub => <option selected={subject === sub} value={sub} key={sub}>{sub}</option>)}
+					</Select>
+				</div>
+				<div className={styles.input_container}>
+					<TextInput name="message" label={labels['message']} required/>
 				</div>
 				<div className={styles.recaptcha}>
-				<ReCAPTCHA 
-					ref={recaptchaRef}
-					sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`}
+				<HCaptcha
+					sitekey={`${process.env.NEXT_PUBLIC_HCAPTCHA_KEY}`}
+					onVerify={setCaptchaToken}
 				/>
 				</div>
-				<Button type="submit">Reach Us</Button>
+				<Button type="submit" disabled={isSubmitting}>{buttons['submit']}</Button>
 			</form>
 			<ContactModal open={isModalOpen} closeModal={() => setModalOpen(false)}/>
 		</div>

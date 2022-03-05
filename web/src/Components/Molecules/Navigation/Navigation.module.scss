@@ -1,9 +1,11 @@
 @import '../../../../styles/typescale';
 @import '../../../../styles/variables';
 @import '../../../../styles/breakpoints';
+
 .container{
 	display: flex;
 	flex-direction: column;
+	// border: 1px solid blue;
 }
 
 .menu_button_container{
@@ -12,7 +14,7 @@
 }
 
 .menu_button{
-	border: 1px solid blue;
+	// border: 1px solid blue;
 	padding: .4rem 0;
 	width: 3rem;
 	// height: 2rem;
@@ -22,7 +24,8 @@
 	background: transparent;
 	border: none;
 	color: $white;
-	font-size: $h3;
+	font-size: $h4;
+	// font-size: 12px;
 
 	@include breakpoint-range($from: md){
 		display: none;
@@ -69,6 +72,7 @@
 		position: relative;
 		height: initial;
 		padding: 0;
+		// border: 1px solid red;
 
 		li{
 			&:first-child{
@@ -77,6 +81,7 @@
 		}
 
 		a, button{
+
 			font-size: $h6;
 			padding: .4rem .6rem;
 			margin-left: .4rem;

@@ -10,6 +10,9 @@
 
 .slide_container{
 	// border: 1px solid red;
+	@include breakpoint-range($from: lg){
+		padding: 0 1rem;
+	}
 }
 
 .slide_content{
@@ -33,9 +36,10 @@
 }
 
 .slide_text{
+	// border: 1px solid yellow;
 	@include breakpoint-range($from: lg){
 		width: 50%;
-		margin-right: 1rem;
+		padding-right: 1rem;
 		height: 400px;
 	}
 }

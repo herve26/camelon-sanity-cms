@@ -7,7 +7,7 @@ const appearances = {
 	secondary: styles.appearance_secondary
 }
 
-export default function Section({title, _type, appearance='default', half, id, ...content,}){
+export default function Section({title, _type, appearance='default', half, id, translation, ...content}){
 	const Content = sections[_type]
 	
 	return (
@@ -17,7 +17,7 @@ export default function Section({title, _type, appearance='default', half, id, .
 				<div className={`${styles.title_bar} ${appearance === 'primary' ? styles.second_bar : ''}`}/>
 			</div>
 			<div className={`${styles.content}`}>
-				<Content {...content}/>
+				<Content translation={translation} {...content}/>
 			</div>
 		</section>
 	)

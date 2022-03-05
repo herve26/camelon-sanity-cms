@@ -1,7 +1,11 @@
 import styles from './Input.module.scss';
 
-export default function Input(props){
+export default function Input({label, ...props}){
 	return(
-		<input {...props} className={styles.container}/>
+		<div className={styles.container}>
+			<label className={styles.label}>{label}
+			<input {...props} className={styles.input}/>
+			</label>
+		</div>
 	)
 }

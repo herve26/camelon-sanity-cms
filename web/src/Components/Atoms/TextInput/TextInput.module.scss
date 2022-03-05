@@ -1,7 +1,16 @@
 @import '../../../../styles/variables';
+
 .container{
+	display: flex;
+	flex-direction: column;
+	color: gray;
+	text-transform: uppercase;
+}
+
+.input{
+	margin-top: .2rem;
 	width: 100%;
-	min-height: 12rem;
+	min-height: 10rem;
 	border-radius: 1rem;
 	border: 2px solid $primary_color;
 	padding: .8rem;
