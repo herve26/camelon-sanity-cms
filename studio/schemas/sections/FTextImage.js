@@ -20,6 +20,12 @@ export default {
 			title: 'Section Text',
 			name: 'text',
 			type: 'simplePortableText'
+		},
+		{
+			title: 'Section CTA',
+			name: 'ctas',
+			type: 'array',
+			of: [{type: 'cta'}]
 		}
 	]
 }

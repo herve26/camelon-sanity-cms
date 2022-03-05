@@ -15,6 +15,12 @@ export default {
 			type: 'image',
 			name: 'image',
 			title: 'Section Image'
+		},
+		{
+			type: 'array',
+			name: 'subjects',
+			title: 'Contact Form Subjects',
+			of: [{type: 'string'}]
 		}
 	]
 }

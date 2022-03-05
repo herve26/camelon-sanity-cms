@@ -5,7 +5,7 @@ export default {
   validation: Rule =>
     Rule.custom(
       (fields = {}) =>
-        !fields.route || !fields.link || 'Only one link type is allowed'
+        !fields.route || !fields.link || !fileds.anchor || 'Only one link type is allowed'
     ),
   fieldsets: [
     {
@@ -33,6 +33,17 @@ export default {
       type: 'url',
       fieldset: 'link',
     },
+    {
+      title: 'Anchor Link',
+      name: 'anchor',
+      type: 'navItem',
+      fieldset: 'link'
+    },
+    {
+      title: 'Link Parameter',
+      name: 'params',
+      type: 'string'
+    }
   ],
   preview: {
     select: {
@@ -40,13 +51,16 @@ export default {
       routeTitle: 'route.title',
       slug: 'route.slug.current',
       link: 'link',
+      anchor: 'anchor.Slug'
     },
-    prepare({ title, routeTitle = '', slug, link }) {
+    prepare({ title, routeTitle = '', slug, link, anchor }) {
       const subtitleExtra = slug
         ? `Slug:/${slug}/`
         : link
         ? `External link: ${link}`
-        : 'Not set';
+        : anchor
+        ? `#${anchor}`
+        :'Not set';
       return {
         title: `${title}`,
         subtitle: `${routeTitle} ${subtitleExtra}`,
