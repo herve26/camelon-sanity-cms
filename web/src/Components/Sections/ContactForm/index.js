@@ -23,8 +23,6 @@ export default function ContactForm({image, subjects, translation={labels: { nam
 
 	const router = useRouter()
 
-	console.log(router)
-
 	useEffect(() => {
 		if(router && router.query.query){
 			setSubject(router.query.query)
@@ -58,10 +56,12 @@ export default function ContactForm({image, subjects, translation={labels: { nam
 			const formData = {}
 			
 			Object.entries(e.target.elements).forEach(([name, input]) => {
-				if(input.type !== 'submit')
+
+				if(input.type !== 'submit' && input.name !== "g-recaptcha-response" && input.name !== "h-captcha-response"){
 					formData[input.name] = input.value
+				}
 			})
-		
+
 			await fetch(`https://formsubmit.co/ajax/221a37a42430160bfb1631a8a6eff41f`, {
 				method: "POST",
 				headers: {
@@ -97,8 +97,8 @@ export default function ContactForm({image, subjects, translation={labels: { nam
 					<Input type="email" name="email" label={labels['email']} required/>
 				</div>
 				<div className={styles.input_container}>
-					<Select name="_subject" label={labels['subject']}>
-						{subjects.map(sub => <option selected={subject === sub} value={sub} key={sub}>{sub}</option>)}
+					<Select value={subject} name="_subject" label={labels['subject']}>
+						{subjects.map(sub => <option value={sub} key={sub}>{sub}</option>)}
 					</Select>
 				</div>
 				<div className={styles.input_container}>
