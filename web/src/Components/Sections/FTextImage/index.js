@@ -8,7 +8,6 @@ import SimpleBlockContent from '#Atoms/SimpleBlockContent';
 import { resolve_cta } from '#Utils/index';
 
 export default function FTextImage({image, text, ctas}){
-	console.log(ctas)
 
 	return (
 		<div className={styles.container}>

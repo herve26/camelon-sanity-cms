@@ -1,10 +1,11 @@
+import { forwardRef } from 'react';
 import styles from './Button.module.scss';
 
-export default function Button({children, elm="button", ...rest}){
+export default forwardRef(({children, elm="button", ...rest}, ref) => {
 
 	if(elm === "a"){
-		return <a className={styles.container} {...rest}>{children}</a> 
+		return <a className={styles.container} ref={ref} {...rest}>{children}</a> 
 	}
 
-	return <button className={styles.container} {...rest}>{children}</button>
-}
+	return <button className={styles.container} ref={ref} {...rest}>{children}</button>
+})

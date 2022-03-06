@@ -5,8 +5,8 @@ export default function Cards({cards}){
 	return(
 		<div className={styles.container}>
 			{cards.map((card, idx) => 
-				<div className={styles.card}>
-					<Card key={idx} {...card}/>
+				<div key={card._key} className={styles.card}>
+					<Card {...card}/>
 				</div>
 			)}
 		</div>
