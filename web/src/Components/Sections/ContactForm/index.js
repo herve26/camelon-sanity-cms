@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useRef, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
@@ -10,24 +9,21 @@ import Input from '#Atoms/Input';
 import Button from '#Atoms/Button';
 import TextInput from '#Atoms/TextInput';
 import Select from '#Atoms/Select';
+import ContactContext from '#Utils/contactFormContext';
 
 import styles from './ContactForm.module.scss';
 
 export default function ContactForm({image, subjects, translation={labels: { name: 'Name', email: 'Email', subject: 'Subject', message: 'Message'} }}){
 
+	const {subject, setSubject} = useContext(ContactContext)
 	const recaptchaRef = useRef()
 	const [isModalOpen, setModalOpen] = useState(false)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [captchaToken, setCaptchaToken] = useState('')
-	const [subject, setSubject] = useState(null)
 
-	const router = useRouter()
-
-	useEffect(() => {
-		if(router && router.query.query){
-			setSubject(router.query.query)
-		}
-	},[router])
+	const handleSelectChange = val => {
+		setSubject(val.target.value)
+	}
 
 	async function submit(e){
 		e.preventDefault()
@@ -87,7 +83,7 @@ export default function ContactForm({image, subjects, translation={labels: { nam
 	return(
 		<div className={styles.container}>
 			<div className={styles.image_container}>
-				<SanityImage layout="fill" src={image}/>
+				<SanityImage layout="responsive" src={image}/>
 			</div>
 			<form onSubmit={submit} className={styles.form_container}>
 				<div className={styles.input_container}>
@@ -97,7 +93,7 @@ export default function ContactForm({image, subjects, translation={labels: { nam
 					<Input type="email" name="email" label={labels['email']} required/>
 				</div>
 				<div className={styles.input_container}>
-					<Select value={subject} name="_subject" label={labels['subject']}>
+					<Select value={subject} onChange={handleSelectChange} name="_subject" label={labels['subject']}>
 						{subjects.map(sub => <option value={sub} key={sub}>{sub}</option>)}
 					</Select>
 				</div>

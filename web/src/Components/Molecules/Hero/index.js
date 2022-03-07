@@ -1,15 +1,18 @@
+import { useContext } from 'react';
 import Link from 'next/link';
 import Button from '#Atoms/Button';
 import SanityImage from '#Atoms/SanityImage';
 import SimpleBlockContent from '#Atoms/SimpleBlockContent';
 import styles from './Hero.module.scss';
 import Logo from '../../../icons/logo_hor.svg';
+import ContactContext from '#Utils/contactFormContext';
 
 import { resolve_cta } from '#Utils/index';
 
 
 export default function Hero({nav, hero, logo}){
 	const {heading, backgroundImage, tagline, ctas} = hero
+	const { setSubject } = useContext(ContactContext);
 
 	return (
 		<div className={styles.container}>
@@ -26,7 +29,15 @@ export default function Hero({nav, hero, logo}){
 						<SimpleBlockContent blocks={tagline}/>
 					</div>
 					<div className={styles.button_container}>
-					{ctas && ctas.map(cta => <Link key={cta._key} href={resolve_cta(cta)}><Button>{cta.title}</Button></Link>)}
+					{ctas && ctas.map(cta => 
+						<Button
+							key={cta._key}
+							elm="a" href={`#${cta.anchor.Slug}`}
+							onClick={() => setSubject(cta.params)}
+						>
+							{cta.title}
+						</Button>
+					)}
 					</div>
 				</div>
 			</div>
