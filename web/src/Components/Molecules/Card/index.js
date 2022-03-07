@@ -9,7 +9,7 @@ export default function Card({caption, title, image, text}){
 			<div className={styles.header}>
 				<div className={styles.caption}><h3>{caption}</h3></div>
 				<div className={styles.image_container}>
-					<SanityImage layout="fill" src={image}/>
+					<SanityImage layout="responsive" src={image}/>
 				</div>
 			</div>
 			<div className={styles.content}>

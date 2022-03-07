@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
 import client from '../../../client';
 
-export default function SanityImage({src, size=2000, layout="responsive", ...rest}){
+export default function SanityImage({src, layout="responsive", ...rest}){
 	const imageProps = useNextSanityImage(
 		client,
 		src
