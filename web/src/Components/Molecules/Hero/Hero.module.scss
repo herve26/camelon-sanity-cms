@@ -4,12 +4,13 @@
 
 .container{
 	position: relative;
-	min-height: 24rem;
-	overflow: hidden;
+	min-height: 30rem;
+	
 
 	@include breakpoint-range($from: md){
 		min-height: 100vh;
 		max-height: 100vh;
+		overflow: hidden;
 	}
 }
 
@@ -39,6 +40,7 @@
 }
 
 .menu_button button{
+	// border: 1px solid blue;
 	border: none;
 	background: transparent;
 	padding: 8px;
@@ -60,7 +62,6 @@
 }
 
 .subHeading{
-	/*border:  1px solid red;*/
 	color:  $white;
 	@include breakpoint-range($from: md){
 		margin: 2.4rem 0;
@@ -68,23 +69,14 @@
 }
 
 .navContainer{
-	// border: 1px solid red;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
 
 .logo{
-	// border: 1px solid blue;
-	// border-radius: 16px;
-	// margin-right: auto;
-	// margin-bottom: 2rem;
-	// height: auto;
 	margin-right: auto;
 	border-radius: 5px;
 	padding: 10px;
 	background: white;
-	img{
-		// margin: 8px;
-	}
 }

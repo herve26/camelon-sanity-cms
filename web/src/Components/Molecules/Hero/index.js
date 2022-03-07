@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Button from '#Atoms/Button';
 import SanityImage from '#Atoms/SanityImage';
@@ -7,6 +6,7 @@ import styles from './Hero.module.scss';
 import Logo from '../../../icons/logo_hor.svg';
 
 import { resolve_cta } from '#Utils/index';
+
 
 export default function Hero({nav, hero, logo}){
 	const {heading, backgroundImage, tagline, ctas} = hero
@@ -30,7 +30,7 @@ export default function Hero({nav, hero, logo}){
 					</div>
 				</div>
 			</div>
-			<SanityImage className={styles.image} priority layout="fill" src={backgroundImage}/>
+			<SanityImage src={backgroundImage} priority layout="fill" sizes="(max-width: 1900px) 100vw, 1900px"/>
 		</div>
 	)
 }
