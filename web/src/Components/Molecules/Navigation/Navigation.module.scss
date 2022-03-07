@@ -14,10 +14,8 @@
 }
 
 .menu_button{
-	// border: 1px solid blue;
 	padding: .4rem 0;
 	width: 3rem;
-	// height: 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -25,7 +23,6 @@
 	border: none;
 	color: $white;
 	font-size: $h4;
-	// font-size: 12px;
 
 	@include breakpoint-range($from: md){
 		display: none;
@@ -33,7 +30,6 @@
 }
 
 .menu_icon{
-	// border: 1px solid red;
 	transform: scale(1.8);
 }
 
@@ -60,7 +56,7 @@
 		width: 100%;
 		border: none;
 		background: transparent;
-		// border: 1px solid blue;
+		font-family: 'Playfair Display', serif;
 	}
 
 	@include breakpoint-range($from: md){
@@ -81,12 +77,11 @@
 		}
 
 		a, button{
-
-			font-size: $h6;
+			font-size: $h4;
 			padding: .4rem .6rem;
 			margin-left: .4rem;
-			font-weight: bold;
-			border-bottom: 6px solid transparent;
+			// font-weight: bold;
+			border-bottom: 4px solid transparent;
 			&:hover{
 				border-bottom-color: $primary_color;
 			}
