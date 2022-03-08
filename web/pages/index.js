@@ -82,9 +82,9 @@ export default function Home({twitter, title, description, openGraphImage, hero,
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta itemprop="name" content={title}/>
-        <meta itemprop="description" content={description}/>
-        <meta itemprop="image" content={openGraphImage}/>
+        <meta itemProp="name" content={title}/>
+        <meta itemProp="description" content={description}/>
+        <meta itemProp="image" content={openGraphImage}/>
         {socialTags(socialProps).map(({name, content}) => 
             <meta key={name} name={name} content={content}/>
         )}

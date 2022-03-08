@@ -7,7 +7,7 @@ export default function Carousel({slides}){
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [slidesList, setSlidesList] = useState([]);
 	
-	const scrollTo = useCallback(index => embla && embla.scrollTo(index))
+	const scrollTo = useCallback(index => embla && embla.scrollTo(index), [embla])
 
 	const onSelect = useCallback(() => {
 		if(!embla) return;
