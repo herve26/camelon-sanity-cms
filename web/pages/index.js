@@ -88,6 +88,18 @@ export default function Home({twitter, title, description, openGraphImage, hero,
         {socialTags(socialProps).map(({name, content}) => 
             <meta key={name} name={name} content={content}/>
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "organization",
+              name: title,
+              about: description,
+              url: config.url
+            })
+          }}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ContactContext.Provider value={values}>
