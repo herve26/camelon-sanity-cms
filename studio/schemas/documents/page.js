@@ -58,6 +58,12 @@ export default {
       description: 'Image for sharing previews on Facebook, Twitter etc.',
       fieldset: 'metadata',
     },
+    {
+      title: 'Site Editor Twitter Hanler',
+      type: 'string',
+      name: 'twitter',
+      fieldset: 'metadata'
+    }
   ],
 
   preview: {
