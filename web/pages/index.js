@@ -95,7 +95,8 @@ export default function Home({twitter, title, description, openGraphImage, hero,
               "@context": "http://schema.org",
               "@type": "organization",
               name: title,
-              about: description,
+              address: sections[sections.length - 1].addresses[0].info[0].value,
+              telephone: sections[sections.length - 1].addresses[0].info[1].value,
               url: config.url
             })
           }}
