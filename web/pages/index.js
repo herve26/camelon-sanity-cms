@@ -97,7 +97,8 @@ export default function Home({twitter, title, description, openGraphImage, hero,
               name: title,
               address: sections[sections.length - 1].addresses[0].info[0].value,
               telephone: sections[sections.length - 1].addresses[0].info[1].value,
-              url: config.url
+              url: config.url,
+              image: openGraphImage
             })
           }}
         />
